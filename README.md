@@ -7,19 +7,19 @@ B. Earthquake rupture dynamics with non-linear friction laws
 
 The source-free elastic wave equation in a heterogeneous 1D medium is 
 
-\begin{align}
+$$\begin{align}
 \rho(x)\partial_t v(x,t) -\partial_x \sigma(x,t) & = 0\\
 \frac{1}{\mu(x)}\partial_t \sigma(x,t) -\partial_x v(x,t) & = 0  
-\end{align}
+\end{align}$$
 
-with $\rho(x)$ the density, $\mu(x)$ the shear modulus and $x = [0, L]$. At the boundaries $ x = 0, x = L$ we pose the general well-posed linear boundary conditions
+with $\rho(x)$ the density, $\mu(x)$ the shear modulus and $x = [0, L]$. At the boundaries $x = 0, x = L$ we pose the general well-posed linear boundary conditions
 
-\begin{equation}
+$$\begin{equation}
 \begin{split}
 B_0(v, \sigma, Z_{s}, r_0): =\frac{Z_{s}}{2}\left({1-r_0}\right){v} -\frac{1+r_0}{2} {\sigma} = 0,  \quad \text{at} \quad x = 0, \\
  B_L(v, \sigma, Z_{s}, r_n): =\frac{Z_{s}}{2} \left({1-r_n}\right){v} + \frac{1+r_n}{2}{\sigma} = 0, \quad \text{at} \quad  x = L.
  \end{split}
-\end{equation}
+\end{equation}$$
 
 with the reflection coefficients $r_0$, $r_n$ being real numbers and  $|r_0|, |r_n| \le 1$. 
 
@@ -162,7 +162,7 @@ The elastic wave equation with the frictional interface condition, satisfies the
 
 With the above friction law the first term in the right hand side of the energy rate, $\sigma [\![ v]\!] = f\left(\left|[\![ v ]\!]\right|,\psi\right){\left|[\![ v ]\!]\right|} \ge 0$, is the work done by friction on the fault which is dissipated as heat. 
 
-### The discontinuous Galerkin spectral element method (DGSEM)###
+#### The discontinuous Galerkin spectral element method (DGSEM)
 
 We will design a provably stable DGSEM obeying the energy balance at the discrete level.
 
