@@ -25,12 +25,7 @@ with the reflection coefficients $r_0$, $r_n$ being real numbers and  $|r_0|, |r
 
 Note that at $x = 0$,  while  $r_0 = -1$ yields a clamped wall, $r_0 = 0$  yields  an absorbing boundary, and  with $r_0 = 1$  we have a free-surface boundary condition. Similarly, at $x = L$, $r_n = -1$ yields a clamped wall, $r_n = 0$ yields an absorbing boundary, and  $r_n = 1$  gives a free-surface boundary condition.
 
-1. Discretize the spatial domain $x$ into $K$ elements and denote the ${k}^{th}$ element $e^k = [x_{k}, x_{k+1}]$ and the element width:
-$$\begin{equation}
-\Delta {x}_k = {x}_{k+1} - {x}_{k}
-\end{equation}$$
-
-Consider two adjacent elements $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$ with an interface at $x_{k+1}$. At the interface we pose the physical conditions for a locked interface
+1. Discretize the spatial domain $x$ into $K$ elements and denote the ${k}^{th}$ element $e^k = [x_{k}, x_{k+1}]$ and the element width: $\Delta {x}_k = x_{k+1} - x_{k}$. Consider two adjacent elements $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$ with an interface at $x_{k+1}$. At the interface we pose the physical conditions for a locked interface
 
 $$\begin{align}
 \text{force balance}:  \quad &\sigma^{-} = \sigma^{+} = \sigma, \nonumber \\
@@ -41,24 +36,25 @@ where $$[\[ v]\] = v^{+} - v^{-}$$, and $v^{-}, \sigma^{-}$ and $v^{+}, \sigma^{
 
 2. Within the element derive the weak form of the equation by multiplying both sides by an arbitrary test function and integrating over the element.
 
-3) Next map the $e^k = [x_{k}, x_{k+1}]$ to a reference element $\xi = [-1, 1]$
+3. Next map the $e^k = [x_{k}, x_{k+1}]$ to a reference element $\xi = [-1, 1]$
 
-4) Inside the transformed  element  $\xi \in [-1, 1]$, approximate the solution  and material parameters by a polynomial interpolant,  and write 
-\begin{equation}
+4. Inside the transformed  element  $\xi \in [-1, 1]$, approximate the solution  and material parameters by a polynomial interpolant,  and write 
+
+$$\begin{equation}
 v^k(\xi, t) = \sum_{j = 1}^{N+1}v_j^k(t) \mathcal{L}_j(\xi), \quad \sigma^k(\xi, t)  = \sum_{j = 1}^{N+1}\sigma_j^k(t) \mathcal{L}_j(\xi),
-\end{equation}
+\end{equation}$$
 
-\begin{equation}
+$$\begin{equation}
 \rho^k(\xi) = \sum_{j = 1}^{N+1}\rho_j^k \mathcal{L}_j(\xi), \quad \mu^k(\xi) = \sum_{j = 1}^{N+1}\mu_j^k \mathcal{L}_j(\xi),
-\end{equation}
+\end{equation}$$
 
-where $ \mathcal{L}_j$ is the $j$th interpolating polynomial of degree $N$. If we consider  nodal basis then the interpolating polynomials satisfy $ \mathcal{L}_j(\xi_i) = \delta_{ij}$.
+where $\mathcal{L}_j$ is the $j$th interpolating polynomial of degree $N$. If we consider  nodal basis then the interpolating polynomials satisfy $\mathcal{L}_j(\xi_i) = \delta_{ij}$.
 
 The interpolating nodes $\xi_i$, $i = 1, 2, \dots, N+1$ are the nodes of a Gauss quadrature with
 
-\begin{equation}
- \sum_{i = 1}^{N+1} f(\xi_i)w_i \approx \int_{-1}^{1}f(\xi) d\xi,
-\end{equation}
+$$\begin{equation}
+\sum_{i = 1}^{N+1} f(\xi_i)w_i \approx \int_{-1}^{1}f(\xi) d\xi,
+\end{equation}$$
 
 where $w_i$ are quadrature weights.
 
