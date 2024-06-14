@@ -25,14 +25,14 @@ with the reflection coefficients $r_0$, $r_n$ being real numbers and  $|r_0|, |r
 
 Note that at $x = 0$,  while  $r_0 = -1$ yields a clamped wall, $r_0 = 0$  yields  an absorbing boundary, and  with $r_0 = 1$  we have a free-surface boundary condition. Similarly, at $x = L$, $r_n = -1$ yields a clamped wall, $r_n = 0$ yields an absorbing boundary, and  $r_n = 1$  gives a free-surface boundary condition.
 
-1) Discretize the spatial domain $x$ into $K$ elements and denote the ${k}^{th}$ element $e^k = [x_{k}, x_{k+1}]$ and the element width $$\Delta{x}_k = x_{k+1}-x_{k}$$. Consider two adjacent elements $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$ with an interface at $x_{k+1}$. At the interface we pose the physical conditions for a locked interface
+1) Discretize the spatial domain $x$ into $K$ elements and denote the ${k}^{th}$ element $e^k = [x_{k}, x_{k+1}]$ and the element width $\Delta{x}_k = x_{k+1}-x_{k}$. Consider two adjacent elements $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$ with an interface at $x_{k+1}$. At the interface we pose the physical conditions for a locked interface
 
 $$\begin{align}
 \text{force balance}:  \quad &\sigma^{-} = \sigma^{+} = \sigma, \nonumber \\
-\text{no slip}: \quad & [\![ v]\!]  = 0,
+\text{no slip}: \quad & [\[ v]\]  = 0,
 \end{align}$$
 
-where $$[\![ v]\!] = v^{+} - v^{-}$$, and $v^{-}, \sigma^{-}$ and $v^{+}, \sigma^{+}$ are the fields in $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$, respectively. 
+where $$[\[ v]\] = v^{+} - v^{-}$$, and $v^{-}, \sigma^{-}$ and $v^{+}, \sigma^{+}$ are the fields in $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$, respectively. 
 
 2) Within the element derive the weak form of the equation by multiplying both sides by an arbitrary test function and integrating over the element.
 
