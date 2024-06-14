@@ -38,7 +38,7 @@ where $$[\[ v]\] = v^{+} - v^{-}$$, and $v^{-}, \sigma^{-}$ and $v^{+}, \sigma^{
 
 3. Next map the $e^k = [x_{k}, x_{k+1}]$ to a reference element $\xi = [-1, 1]$
 
-4. Inside the transformed  element  $\xi \in [-1, 1]$, approximate the solution  and material parameters by a polynomial interpolant,  and write 
+4. Inside the transformed  element  $\xi \in [-1, 1]$, approximate the solution  and material parameters by a polynomial interpolant, and write 
 
 $$\begin{equation}
 v^k(\xi, t) = \sum_{j = 1}^{N+1}v_j^k(t) \mathcal{L}_j(\xi), \quad \sigma^k(\xi, t)  = \sum_{j = 1}^{N+1}\sigma_j^k(t) \mathcal{L}_j(\xi),
@@ -58,47 +58,46 @@ $$\begin{equation}
 
 where $w_i$ are quadrature weights.
 
-5) At the element boundaries $\xi = \pm 1$, we generate $\widehat{v}^{k}(\pm 1, t)$ $\widehat{\sigma}^{k}(\pm 1, t)$ by solving a Riemann problem and constraining the solutions against interface and boundary conditions. Then numerical fluctuations $F^k(-1, t)$ and $G^k(1, t)$ are obtained by penalizing hat variables against the incoming characteristics only.
+5. At the element boundaries $\xi = \pm 1$, we generate $\widehat{v}^{k}(\pm 1, t)$ $\widehat{\sigma}^{k}(\pm 1, t)$ by solving a Riemann problem and constraining the solutions against interface and boundary conditions. Then numerical fluctuations $F^k(-1, t)$ and $G^k(1, t)$ are obtained by penalizing hat variables against the incoming characteristics only.
 
-6) Finally, the flux fluctuations are appended to the semi-discrete PDE with special penalty weights and we have 
+6. Finally, the flux fluctuations are appended to the semi-discrete PDE with special penalty weights and we have 
 
-
-\begin{equation}
+$$\begin{equation}
 \begin{split}
 \frac{d \boldsymbol{v}^k( t)}{ d t} &= \frac{2}{\Delta{x}_k} W^{-1}({\boldsymbol{\rho}}^{k})\left(Q \boldsymbol{\sigma}^k( t) - \boldsymbol{e}_{1}F^k(-1, t)- \boldsymbol{e}_{N+1}G^k(1, t)\right),
 \end{split}
-\end{equation}
+\end{equation}$$
 
-\begin{equation}
+$$\begin{equation}
 \begin{split}
 \frac{d \boldsymbol{\sigma}^k( t)}{ d t} &= \frac{2}{\Delta{x}_k} W^{-1}(1/{\boldsymbol{\mu}^{k}})\left(Q \boldsymbol{v}^k( t)  + \boldsymbol{e}_{1}\frac{1}{Z_{s}^{k}(-1)}F^k(-1, t)- \boldsymbol{e}_{N+1}\frac{1}{Z_{s}^{k}(1)}G^k(1, t)\right),
 \end{split}
-\end{equation}
+\end{equation}$$
 
 
 where 
-\begin{align}
+$$\begin{align}
 \boldsymbol{e}_{1} = [ \mathcal{L}_1(-1), \mathcal{L}_2(-1), \dots,  \mathcal{L}_{N+1}(-1) ]^T, \quad  \boldsymbol{e}_{N+1} = [ \mathcal{L}_1(1), \mathcal{L}_2(1), \dots,  \mathcal{L}_{N+1}(1) ]^T,
-\end{align}
+\end{align}$$
 and
-\begin{align}
+$$\begin{align}
 G^k(1, t):= \frac{Z_{s}^{k}(1)}{2} \left(v^{k}(1, t)-\widehat{v}^{k}(1, t) \right) + \frac{1}{2}\left(\sigma^{k}(1, t)- \widehat{\sigma}^{k}(1, t)\right), 
-\end{align}
-\begin{align}
+\end{align}$$
+$$\begin{align}
 F^{k}(-1, t):= \frac{Z_{s}^{k}(-1)}{2} \left(v^{k}(-1, t)-\widehat{v}^{k}(-1, t) \right) - \frac{1}{2}\left(\sigma^{k}(-1, t)- \widehat{\sigma}^{k}(-1, t)\right).
-\end{align}
+\end{align}$$
 
 And the weighted elemental mass matrix $W^N(a)$ and the stiffness matrix $Q^N $ are defined by
 
-\begin{align}
+$$\begin{align}
 W_{ij}(a) = \sum_{m = 1}^{N+1} w_m \mathcal{L}_i(\xi_m)  {\mathcal{L}_j(\xi_m)} a(\xi_m), \quad Q_{ij} = \sum_{m = 1}^{N+1} w_m \mathcal{L}_i(\xi_m)  {\mathcal{L}_j^{\prime}(\xi_m)}.
-\end{align}
+\end{align}$$
 
-7) Time extrapolation can be performed using any stable time stepping scheme like Runge-Kutta or ADER scheme.This notebook implements both Runge-Kutta and ADER schemes for solving the free source version of the elastic wave equation in a homogeneous media. To keep the problem simple, we use as spatial initial condition a Gauss function with half-width $\delta$
-
+7. Time extrapolation can be performed using any stable time stepping scheme like Runge-Kutta or ADER scheme.This notebook implements both Runge-Kutta and ADER schemes for solving the free source version of the elastic wave equation in a homogeneous media. To keep the problem simple, we use as spatial initial condition a Gauss function with half-width $\delta$
+$$
 \begin{equation}
 v(x,t=0)  = e^{-1/\delta^2 (x - x_{o})^2}, \quad \sigma(x,t=0) = 0
-\end{equation}
+\end{equation}$$
 
 **** Exercises****
 1. Lagrange polynomial is used to interpolate the solution and the material parameters. First use polynomial degree 2 and then 6. Compare the simulation results in terms of accuracy of the solution (third and fourth figures give erros). At the end of simulation, time required to complete the simulation is also printed. Also compare the time required to complete both simulations.
