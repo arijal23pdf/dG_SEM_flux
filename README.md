@@ -18,7 +18,7 @@ $$\begin{equation}
 \begin{split}
 B_0(v, \sigma, Z_{s}, r_0): =\frac{Z_{s}}{2}\left({1-r_0}\right){v} -\frac{1+r_0}{2} {\sigma} = 0,  \quad \text{at} \quad x = 0, \\
  B_L(v, \sigma, Z_{s}, r_n): =\frac{Z_{s}}{2} \left({1-r_n}\right){v} + \frac{1+r_n}{2}{\sigma} = 0, \quad \text{at} \quad  x = L.
- \end{split}
+\end{split}
 \end{equation}$$
 
 with the reflection coefficients $r_0$, $r_n$ being real numbers and  $|r_0|, |r_n| \le 1$. 
@@ -27,8 +27,10 @@ Note that at $x = 0$,  while  $r_0 = -1$ yields a clamped wall, $r_0 = 0$  yield
 
 1. Discretize the spatial domain $x$ into $K$ elements and denote the ${k}^{th}$ element $e^k = [x_{k}, x_{k+1}]$ and the element width 
 
-$$\begin{equation} 
-\partial_x{x}_k = x_{k+1}-x_{k}.
+$$\begin{equation}
+\begin{split}
+\Delta{x}_k = x_{k+1}-x_{k}.
+\end{split}
 \end{equation}$$
 
 Consider two adjacent elements $e^k = [x_{k}, x_{k+1}]$ and  $e^{k+1} = [x_{k+1}, x_{k+2}]$ with an interface at $x_{k+1}$. At the interface we pose the physical conditions for a locked interface
