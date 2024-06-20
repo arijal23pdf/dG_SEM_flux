@@ -1,0 +1,4 @@
+dGElastic1D:
+  node: "Legendre" # another options is Lobatto
+  poly_deg: 2 # upto 12 degree available
+  time_integrator: "ADER" # another available option is RK
