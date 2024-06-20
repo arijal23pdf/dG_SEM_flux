@@ -1,0 +1,5 @@
+artifacts_root: artifacts
+
+dGElastic:
+  root_dir: artifacts/dGElastic1D
+  
